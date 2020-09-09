@@ -11,17 +11,17 @@ import {
   setSearchResultHelper,
 } from '../helpers/search_reducer_herlpers';
 
-export type storeStateType = {
+export type SearchReducerType = {
   searchTerms: searchTermsType;
   searchResult: searchResultType;
 };
 
-const defaultState: storeStateType = {
+const defaultState: SearchReducerType = {
   searchTerms: { entityType: 'users', searchText: '' },
   searchResult: [],
 };
 
-const sharedReducer = (
+const searchReducer = (
   state = defaultState,
   action: {
     type: string;
@@ -39,4 +39,4 @@ const sharedReducer = (
   }
 };
 
-export default sharedReducer;
+export default searchReducer;

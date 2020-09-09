@@ -1,30 +1,23 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './header.scss';
-import { searchUsers, searchRepos } from '../../api/apiCalls';
-const logo = require('./../../assets/images/github-logo.png');
+import { connect } from 'react-redux';
+import { search } from './../../redux/actions/search';
+import { RootReducerType } from '../../redux/reducers/root_reducer';
+import logo from './../../assets/images/github-logo.png';
 
-interface HeaderProps {}
-
-const search = async (searchText: string, entityType: string) => {
-  let result;
-  if (searchText.length >= 3) {
-    if (entityType === 'users') {
-      result = await searchUsers(searchText);
-    } else if (entityType === 'repos') {
-      result = await searchRepos(searchText);
-    }
-  }
-  console.log(result);
-  return result;
-};
+interface HeaderProps {
+  search: (searchText: string, entityType: string) => Promise<void>;
+  searchTerms: { searchText: string; entityType: string };
+}
 
 const Header = (props: HeaderProps) => {
-  const [searchText, setSearchText] = useState('');
-  const [entityType, setEntityType] = useState('users');
+  const { search, searchTerms } = props;
+  const [searchText, setSearchText] = useState(searchTerms.searchText);
+  const [entityType, setEntityType] = useState(searchTerms.entityType);
 
   useEffect(() => {
     search(searchText, entityType);
-  }, [entityType, searchText]);
+  }, [entityType, search, searchText]);
 
   const handleSearchTextChange = useCallback(
     (event) => {
@@ -56,7 +49,7 @@ const Header = (props: HeaderProps) => {
           value={searchText}
           onChange={handleSearchTextChange}
         />
-        <select onChange={handleEntityTypeChange}>
+        <select value={entityType} onChange={handleEntityTypeChange}>
           <option value="users">Users</option>
           <option value="repos">Repositories</option>
         </select>
@@ -65,4 +58,8 @@ const Header = (props: HeaderProps) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state: RootReducerType) => ({
+  ...state.searchReducer,
+});
+
+export default connect(mapStateToProps, { search })(Header);

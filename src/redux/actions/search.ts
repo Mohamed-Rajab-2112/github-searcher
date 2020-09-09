@@ -3,7 +3,7 @@ import { updateSearchTerms } from './update_search_terms';
 import { searchRepos, searchUsers } from '../../api/apiCalls';
 
 export const search = (searchText: string, entityType: string) => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     let searchResult;
     if (searchText.length >= 3) {
       if (entityType === 'users') {
@@ -11,6 +11,8 @@ export const search = (searchText: string, entityType: string) => {
       } else {
         searchResult = await searchRepos(searchText);
       }
+      console.log(searchResult);
+      console.log(searchText);
       dispatch(setSearchResult(searchResult));
       dispatch(updateSearchTerms({ searchText, entityType }));
     }
