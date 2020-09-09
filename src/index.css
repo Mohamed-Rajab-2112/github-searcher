@@ -7,6 +7,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  height: 100%;
+}
+
+html,
+body,
+#root {
+  display: flex;
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+p,
+span {
+  margin: 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
