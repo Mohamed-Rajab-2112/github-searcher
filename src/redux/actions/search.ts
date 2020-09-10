@@ -21,7 +21,7 @@ export const search = (searchText: string, entityType: string) => {
         searchResult = await promise;
       } else {
         const { cancel, promise } = createImperativePromise(
-          searchUsers(searchText)
+          searchRepos(searchText)
         );
         cancelSearchPromise = cancel;
         searchResult = await promise;

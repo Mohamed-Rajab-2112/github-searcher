@@ -25,11 +25,16 @@ const Header = (props: HeaderProps) => {
   }, [searchResult]);
 
   useEffect(() => {
-    setIsLoading(true);
-    search(searchText, entityType)
-      .then(() => setIsLoading(false))
-      .catch(() => setIsLoading(false));
-  }, [entityType, search, searchText]);
+    if (
+      searchTerms.searchText !== searchText ||
+      searchTerms.entityType !== entityType
+    ) {
+      setIsLoading(true);
+      search(searchText, entityType)
+        .then(() => setIsLoading(false))
+        .catch(() => setIsLoading(false));
+    }
+  }, [entityType, search, searchTerms.entityType, searchTerms.searchText, searchText]);
 
   const handleSearchTextChange = useCallback(
     (event) => {
