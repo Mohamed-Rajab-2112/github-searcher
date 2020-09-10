@@ -1,0 +1,63 @@
+@import './../../assets/styles/colors.scss';
+
+$inputHeight: 45px;
+
+.search-section {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  transition: all 100ms;
+}
+div.moveUp {
+  margin: 50px auto 50px 5%;
+  align-self: flex-start;
+}
+.header {
+  display: flex;
+  align-items: center;
+  h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  p {
+    color: $grey;
+  }
+  .logo {
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+}
+.search-terms {
+  margin-top: 20px;
+  input[type='text'] {
+    padding-left: 15px;
+    height: $inputHeight;
+    width: 350px;
+    &::placeholder {
+      color: $grey;
+      font-size: 1.15em;
+    }
+  }
+  select {
+    height: $inputHeight;
+    margin-left: 15px;
+    color: $grey;
+    padding: 1px 15px;
+    font-size: 1em;
+  }
+  input[type='text'],
+  select {
+    border: 1px solid $lightGrey;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .search-terms {
+    input[type='text'] {
+      width: 225px;
+    }
+  }
+}
