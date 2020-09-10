@@ -4,7 +4,7 @@ import {
 } from '../actions/update_search_terms';
 import {
   SET_SEARCH_RESULT,
-  searchResultType,
+  SearchResultType,
 } from '../actions/set_search_result';
 import {
   updateSearchTermsHelper,
@@ -14,7 +14,7 @@ import { ENTITY_TYPES } from '../../constants';
 
 export type SearchReducerType = {
   searchTerms: searchTermsType;
-  searchResult: searchResultType;
+  searchResult: SearchResultType;
 };
 
 const defaultState: SearchReducerType = {
@@ -27,7 +27,7 @@ const searchReducer = (
   action: {
     type: string;
     searchTerms: searchTermsType;
-    searchResult: searchResultType;
+    searchResult: SearchResultType;
   }
 ) => {
   switch (action.type) {

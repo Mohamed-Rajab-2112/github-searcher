@@ -1,6 +1,6 @@
 import { SearchReducerType } from '../reducers/search_reducer';
 import { searchTermsType } from '../actions/update_search_terms';
-import { searchResultType } from '../actions/set_search_result';
+import { SearchResultType } from '../actions/set_search_result';
 
 export const updateSearchTermsHelper = (
   state: SearchReducerType,
@@ -12,7 +12,7 @@ export const updateSearchTermsHelper = (
 
 export const setSearchResultHelper = (
   state: SearchReducerType,
-  searchResult: searchResultType
+  searchResult: SearchResultType
 ) => ({
   ...state,
   searchResult,

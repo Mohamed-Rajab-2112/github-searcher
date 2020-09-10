@@ -1,8 +1,9 @@
 import * as React from 'react';
 import './userCard.scss';
+import { UserDataType } from '../../redux/actions/set_search_result';
 
 interface UserCardProps {
-  cardData: any;
+  cardData: UserDataType;
 }
 
 const UserCard = (props: UserCardProps) => {

@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, Store, AnyAction } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import rootReducer from './reducers/root_reducer';
@@ -24,6 +24,6 @@ let store = createStore(
   persistedReducer,
   composeEnhancers(applyMiddleware(thunk))
 );
-let persistor = persistStore(store as any);
+let persistor = persistStore((store as unknown) as Store<any, AnyAction>);
 
 export { store, persistor };

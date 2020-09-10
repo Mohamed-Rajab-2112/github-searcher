@@ -6,11 +6,12 @@ import { RootReducerType } from '../../redux/reducers/root_reducer';
 import logo from './../../assets/images/github-logo.png';
 import { ENTITY_TYPES, MINIMUIM_SEARCH_CHARS_COUNT } from '../../constants';
 import Loader from 'react-loader-spinner';
+import { SearchResultType } from '../../redux/actions/set_search_result';
 
 interface HeaderProps {
   search: (searchText: string, entityType: string) => Promise<void>;
   searchTerms: { searchText: string; entityType: string };
-  searchResult: any;
+  searchResult: SearchResultType;
 }
 
 const Header = (props: HeaderProps) => {
@@ -34,7 +35,13 @@ const Header = (props: HeaderProps) => {
         .then(() => setIsLoading(false))
         .catch(() => setIsLoading(false));
     }
-  }, [entityType, search, searchTerms.entityType, searchTerms.searchText, searchText]);
+  }, [
+    entityType,
+    search,
+    searchTerms.entityType,
+    searchTerms.searchText,
+    searchText,
+  ]);
 
   const handleSearchTextChange = useCallback(
     (event) => {
@@ -73,6 +80,7 @@ const Header = (props: HeaderProps) => {
       </div>
       <div className="search-terms">
         <input
+          autoFocus
           type="text"
           placeholder="Start typing to search"
           value={searchText}

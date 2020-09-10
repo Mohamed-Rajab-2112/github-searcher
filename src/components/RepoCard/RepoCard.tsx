@@ -1,8 +1,9 @@
 import * as React from 'react';
 import './repoCard.scss';
+import { RepoDataType } from '../../redux/actions/set_search_result';
 
 interface RepoCardProps {
-  cardData: any;
+  cardData: RepoDataType;
 }
 
 const RepoCard = (props: RepoCardProps) => {

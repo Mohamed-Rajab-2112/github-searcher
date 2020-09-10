@@ -1,44 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Github Searcher
+ It is a simple react app for search github repos and users, in the next few line i will explain aprts of the project and how it works why i choosed  specific approaches.
+ 
+ # Handling debounce
+ For Handling debounce durwing user wrirte i used library called **Awesome debounce promise** https://github.com/slorber/awesome-debounce-promise, instead of including the whole lodash library for simple task like this.
+ 
+ If user starts typing then removed all the characters I have a situation that i need to cancel the debounced promise for example if user typed 5 characters which means there is a http request should sent then user decide to delete all the chraracter,I faced  a stuation to cancel the promise for this i used library called **Awsome imperative promise** which wrap a promise and adds a cancel handler for it.
+ 
+ # Api requests and error handling
+ I used **Axios** for api requests, i created high level interceptor which include the base url for github, also i intercept responses and check if it has error message i show it as toast message for the user.
+ 
+ # Store management
+ I used **redux**, **redux-persist** and **redux-thunk** to handle store management, i store all app data in the store, like the search terms and search results, so if the app refreshed or closed I save the last app state. also using redux thunk for custom middleware to save the terms and result inside a dispatched action that apply the api call, so i keep the my app state separated from the view, so basicly the update happen according to this steps:
+ User dispatch action -> action update store (through api call for search) -> user get the new app state (on the UI)
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# User interface 
+the UI for the app was simple but to keep the aligment at a perfect point i used **flex box** and **css grid** I used flex box to make sure the empty state is 100% cenetered no mater what is the screen size, also used css grid to present search result cards so it will match any screen size with flexibility snd maintain itself. also i used `calc()` css method in few places to keep my dimentions accurate.
