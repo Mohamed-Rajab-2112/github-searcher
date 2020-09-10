@@ -10,6 +10,7 @@ import {
   updateSearchTermsHelper,
   setSearchResultHelper,
 } from '../helpers/search_reducer_herlpers';
+import { ENTITY_TYPES } from '../../constants';
 
 export type SearchReducerType = {
   searchTerms: searchTermsType;
@@ -17,7 +18,7 @@ export type SearchReducerType = {
 };
 
 const defaultState: SearchReducerType = {
-  searchTerms: { entityType: 'users', searchText: '' },
+  searchTerms: { entityType: ENTITY_TYPES.users, searchText: '' },
   searchResult: [],
 };
 

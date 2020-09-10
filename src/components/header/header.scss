@@ -5,6 +5,12 @@ $inputHeight: 45px;
 .search-section {
   display: flex;
   flex-direction: column;
+  margin: auto 0;
+  transition: all 100ms;
+}
+div.moveUp {
+  margin: 50px auto 50px 5%;
+  align-self: flex-start;
 }
 .header {
   display: flex;
@@ -45,5 +51,13 @@ $inputHeight: 45px;
     border: 1px solid $lightGrey;
     border-radius: 3px;
     box-sizing: border-box;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .search-terms {
+    input[type='text'] {
+      width: 250px;
+    }
   }
 }

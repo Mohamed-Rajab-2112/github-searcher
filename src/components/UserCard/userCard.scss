@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center center;
+  }
+  h4 {
+    width: calc(100% - 60px);
+  }
+}

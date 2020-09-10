@@ -21,9 +21,23 @@ body,
 h1,
 h2,
 h3,
+h5,
 p,
 span {
   margin: 0;
+}
+
+.card {
+  border: 1px solid #999;
+  padding: 20px;
+  border-radius: 5px;
+  /* max-width: 350px; */
+}
+
+.truncate {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 code {
