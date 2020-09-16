@@ -31,7 +31,14 @@ span {
   border: 1px solid #999;
   padding: 20px;
   border-radius: 5px;
-  /* max-width: 350px; */
+}
+
+.card h2 {
+  width: 25vw;
+}
+
+.card a {
+  display: inline-block;
 }
 
 .truncate {

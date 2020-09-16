@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { RootReducerType } from '../../redux/reducers/root_reducer';
 import { searchTermsType } from '../../redux/actions/update_search_terms';
-import { ENTITY_TYPES } from '../../constants';
+import { ENTITY_TYPES, MINIMUIM_SEARCH_CHARS_COUNT } from '../../constants';
 import UserCard from '../UserCard/UserCard';
 import RepoCard from '../RepoCard/RepoCard';
 import './searchResult.scss';
@@ -32,7 +32,13 @@ const SearchResult = (props: SearchResultProps) => {
     }
   };
 
-  return <div className="results-container">{renderResultCards()}</div>;
+  return (
+    <>
+      {searchTerms.searchText.length >= MINIMUIM_SEARCH_CHARS_COUNT && (
+        <div className="results-container">{renderResultCards()}</div>
+      )}
+    </>
+  );
 };
 
 const mapStateToProps = (state: RootReducerType) => ({

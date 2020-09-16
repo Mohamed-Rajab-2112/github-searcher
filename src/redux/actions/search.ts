@@ -27,9 +27,9 @@ export const search = (searchText: string, entityType: string) => {
         searchResult = await promise;
       }
       if (searchResult) {
+        dispatch(updateSearchTerms({ searchText, entityType }));
         dispatch(setSearchResult(searchResult?.data.items));
       }
-      dispatch(updateSearchTerms({ searchText, entityType }));
     } else {
       if (cancelSearchPromise) {
         cancelSearchPromise();

@@ -43,25 +43,19 @@ const Header = (props: HeaderProps) => {
     searchText,
   ]);
 
-  const handleSearchTextChange = useCallback(
-    (event) => {
-      setSearchText(event.target.value);
-    },
-    [setSearchText]
-  );
+  const handleSearchTextChange = useCallback((event) => {
+    setSearchText(event.target.value);
+  }, []);
 
-  const handleEntityTypeChange = useCallback(
-    (event) => {
-      setEntityType(event.target.value);
-    },
-    [setEntityType]
-  );
+  const handleEntityTypeChange = useCallback((event) => {
+    setEntityType(event.target.value);
+  }, []);
 
   return (
     <div
       className={
         searchResultUI.length &&
-        searchText.length >= MINIMUIM_SEARCH_CHARS_COUNT
+        (searchText.length >= MINIMUIM_SEARCH_CHARS_COUNT)
           ? 'search-section moveUp'
           : 'search-section'
       }

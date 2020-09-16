@@ -61,3 +61,19 @@ div.moveUp {
     }
   }
 }
+
+@media only screen and (max-width: 375px) {
+  .search-terms {
+    input[type='text'] {
+      width: 180px;
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .search-terms {
+    input[type='text'] {
+      width: 130px;
+    }
+  }
+}
